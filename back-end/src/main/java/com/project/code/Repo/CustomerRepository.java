@@ -1,7 +1,13 @@
 package com.project.code.Repo;
 
 
-public interface CustomerRepository {
+import com.project.code.Model.Customer;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Repository
+public interface CustomerRepository extends JpaRepository<Customer,Long> {
 // 1. Add the repository interface:
 //    - Extend JpaRepository<Customer, Long> to inherit basic CRUD functionality.
 //    - This allows the repository to perform operations like save, delete, update, and find without having to implement these methods manually.
@@ -14,15 +20,15 @@ public interface CustomerRepository {
 //      - Return type: Customer
 //      - Parameter: String email
       
-// Example: public Customer findByEmail(String email);
-
+// Example: public   Customer findByEmail(String email);
+    public Customer findByEmail(String email);
 //    - **findById**:
 //      - This method will allow you to find a customer by their ID.
 //      - Return type: Customer
 //      - Parameter: Long id
       
 // Example: public Customer findById(Long id);
-
+    Customer findByid(Long id);
 // 3. Add any additional methods you may need for custom queries:
 //    - You can create other query methods as needed, like finding customers by name or phone number, etc.
 
